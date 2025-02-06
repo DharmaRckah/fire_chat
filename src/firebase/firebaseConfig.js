@@ -2,20 +2,24 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
+
 const firebaseConfig = {
-  apiKey: "AIzaSyD7C75E888J1jGCGbr5TDSDGq9FlLz9sYA",
-  authDomain: "dm-chat-37348.firebaseapp.com",
-  projectId: "dm-chat-37348",
-  storageBucket: "dm-chat-37348.firebasestorage.app",
-  messagingSenderId: "933748009558",
-  appId: "1:933748009558:web:13dd93d1cbfe989f4f29f7",
-  measurementId: "G-8PKEXJ5XMH"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const realtimeDb = getDatabase(app);
 const analytics = getAnalytics(app); 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-export {app,analytics,auth};
-
+export { app, analytics, auth, db, realtimeDb };

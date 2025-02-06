@@ -5,16 +5,24 @@ import './App.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import Register from './components/Register'
 import Login from './components/Login'
+import Message from './components/Message'
+import Home from './components/Home'
+import UserDashboard from './pages/UserDashboard'
+import Dashboard from './components/Dashboard'
+
 function App() {
 
 
   return (
   <BrowserRouter>
    <Routes>
+    <Route path="/" element={<Home/>}/>
     <Route path ="/register" element={<Register/>}/>
     <Route path ="/login" element={<Login/>}/>
-
+     <Route path= "/message" element={<Message/>}/>
+     <Route path="/dashboard" element={<UserDashboard/>}/>
    </Routes>
+    
   </BrowserRouter>
   )
 }
