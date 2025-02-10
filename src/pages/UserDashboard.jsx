@@ -11,7 +11,7 @@ const UserDashboard = () => {
   const [selectedUser , setSelectedUser ] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate
 
-  useEffect(() => {console.log("user",user)
+  useEffect(() => {
     // Check if user is not authenticated
     if (!user) {
       navigate('/login'); // Redirect to login page

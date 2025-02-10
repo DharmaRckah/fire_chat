@@ -25,7 +25,7 @@ const Dashboard = ({ setSelectedUser  }) => {
             className="p-2 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-300"
             onClick={() => setSelectedUser (user)}
           >
-            <span className="font-medium">{user.email}</span>
+            <span className="font-medium">{user.username}</span>
           </li>
         ))}
       </ul>

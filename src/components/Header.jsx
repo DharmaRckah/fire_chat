@@ -14,6 +14,7 @@ const Header = () => {
   return (
     <header className='bg-blue-500 text-white p-4 flex justify-between items-center'>
       <h1 className='text-xl font-bold'>Chat Application</h1>
+      {console.log("user details in header",user)}
       <div className='flex items-center'>
         <button className='relative mr-4'>
           <FaBell className='text-white text-2xl' />
@@ -22,7 +23,8 @@ const Header = () => {
         <div className='relative'>
           <button onClick={toggleMenu} className='flex items-center'>
             <FaUserCircle className='text-white text-2xl mr-2' />
-            <span>{user ? user.email : 'Guest'}</span> {/* Display user's email or 'Guest' */}
+            {console.log(user)}
+            <span>{user ? user.username : 'Guest'}</span> {/* Display user's email or 'Guest' */}
           </button>
           {menuOpen && (
             <div className='absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg z-10'>
