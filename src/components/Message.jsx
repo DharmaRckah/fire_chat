@@ -1,9 +1,10 @@
-// src/components/Message.jsx
+
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase/firebaseConfig';
 import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { FaPaperPlane, FaSmile } from 'react-icons/fa'; // Import icons from react-icons
 
-const Message = ({ selectedUser  , currentUser   }) => {
+const Message = ({ selectedUser , currentUser  }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
@@ -14,7 +15,7 @@ const Message = ({ selectedUser  , currentUser   }) => {
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const messagesList = snapshot.docs
           .map(doc => ({ id: doc.id, ...doc.data() }))
-          .filter(msg => 
+          .filter(msg =>
             (msg.sender === currentUser ?.uid && msg.receiver === selectedUser ?.uid) ||
             (msg.sender === selectedUser ?.uid && msg.receiver === currentUser ?.uid)
           );
@@ -28,12 +29,10 @@ const Message = ({ selectedUser  , currentUser   }) => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    
-    // Defensive checks
-    if (newMessage.trim() === '' || !currentUser  || !selectedUser ) return; 
 
-    // Log the user IDs for debugging
-  
+    // Defensive checks
+    if (newMessage.trim() === '' || !currentUser  || !selectedUser ) return;
+
     // Ensure userId is defined
     if (!currentUser .uid || !selectedUser .uid) {
       console.error("User  ID is undefined");
@@ -43,8 +42,8 @@ const Message = ({ selectedUser  , currentUser   }) => {
     await addDoc(collection(db, 'messages'), {
       text: newMessage,
       sender: currentUser .uid,
-      receiver: selectedUser .uid, 
-      createdAt: new Date(), 
+      receiver: selectedUser .uid,
+      createdAt: new Date(),
     });
 
     setNewMessage('');
@@ -63,20 +62,23 @@ const Message = ({ selectedUser  , currentUser   }) => {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSendMessage} className='flex p-2'>
-        <input
-          type='text'
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder='Type a message...'
-          className='border border-gray-300 p-2 flex-grow rounded'
-        />
-        <button type='submit' className='bg-blue-500 text-white p-2 rounded ml-2'>Send</button>
+      <form onSubmit={handleSendMessage} className='flex p-2 bg-white border-t border-gray-300'>
+        <div className='flex items-center flex-grow'>
+         
+          <input
+            type='text'
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder='Type a message...'
+            className='border border-gray-300 p-2 flex-grow w-10 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+          />
+          <button type='submit' className='bg-blue-500 text-white p-2 ml-2 rounded-r-md flex items-center'>
+            <FaPaperPlane className='text-lg' />
+          </button>
+        </div>
       </form>
     </div>
   );
 };
 
 export default Message;
-
-

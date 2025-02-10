@@ -12,7 +12,7 @@ const UserList = () => {
       const usersCollection = collection(db, 'users');
       const usersSnapshot = await getDocs(usersCollection);
       const usersList = usersSnapshot.docs.map(doc => doc.data());
-     
+     console.log("ulist",UserList)
       setUsers(usersList);
     };
 
