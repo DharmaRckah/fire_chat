@@ -9,6 +9,7 @@ import Message from './components/Message'
 import Home from './components/Home'
 import UserDashboard from './pages/UserDashboard'
 import Dashboard from './components/Dashboard'
+import NotificationToggle from './components/NotificationToggle'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <Route path ="/login" element={<Login/>}/>
      <Route path= "/message" element={<Message/>}/>
      <Route path="/dashboard" element={<UserDashboard/>}/>
+     <Route path="/note" element={<NotificationToggle/>}/>
    </Routes>
     
   </BrowserRouter>

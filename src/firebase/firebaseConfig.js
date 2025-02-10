@@ -4,7 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database';
-
+import { getMessaging } from "firebase/messaging";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -21,5 +21,5 @@ const db = getFirestore(app);
 const realtimeDb = getDatabase(app);
 const analytics = getAnalytics(app); 
 const auth = getAuth(app);
-
-export { app, analytics, auth, db, realtimeDb };
+const messaging = getMessaging(app);
+export { app, analytics, auth, db, realtimeDb,messaging };
