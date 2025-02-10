@@ -14,9 +14,7 @@ const Home = () => {
           <Link to="/login">
             <button className='bg-green-500 text-white p-2 rounded w-full my-4'>Login</button>
           </Link>
-          <Link to="/message">
-            <button className='bg-purple-500 text-white p-2 rounded w-full my-4'>Message</button>
-          </Link>
+         
         </div>
       </div>
     </div>

@@ -33,9 +33,7 @@ const Message = ({ selectedUser  , currentUser   }) => {
     if (newMessage.trim() === '' || !currentUser  || !selectedUser ) return; 
 
     // Log the user IDs for debugging
-    console.log("Current User ID:", currentUser .uid);
-    console.log("Selected User ID:", selectedUser .uid);
-
+  
     // Ensure userId is defined
     if (!currentUser .uid || !selectedUser .uid) {
       console.error("User  ID is undefined");
@@ -80,3 +78,5 @@ const Message = ({ selectedUser  , currentUser   }) => {
 };
 
 export default Message;
+
+
